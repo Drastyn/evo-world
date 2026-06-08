@@ -1,0 +1,23 @@
+[project]
+name = "evo-world"
+version = "0.1.0"
+description = "Simulación de vida artificial"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "pygame==2.6.1",
+    "numpy==2.4.6"
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest==9.0.3",
+    "ruff==0.15.16",
+    "mypy==2.1.0"
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/evoworld"]
+
+[project.scripts]
+evoworld = "evoworld.main:main"
