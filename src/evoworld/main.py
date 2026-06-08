@@ -6,8 +6,8 @@ from src.evoworld.rendering.renderer import Renderer
 from src.evoworld.simulation.engine import Engine
 
 world = World(width=settings.WORLD_WIDTH, height=settings.WORLD_HEIGHT)
-world.spawn_food(settings.INITIAL_FOOD)
-world.spawn_creatures(settings.INITIAL_CREATURES)
+world.spawn_food(settings.INITIAL_FOOD, settings.MAX_FOOD)
+world.spawn_creatures(settings.INITIAL_CREATURES, settings.INITIAL_ENERGY)
 
 renderer = Renderer(world, settings)
 engine = Engine(world, settings)

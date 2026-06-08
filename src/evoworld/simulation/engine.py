@@ -16,7 +16,8 @@ class Engine:
             creature.x %= self.world.width
             creature.y %= self.world.height
             for food in self.world.food[:]:
-                if creature.x == food.x and creature.y == food.y:
+                eaten = creature.x == food.x and creature.y == food.y
+                if eaten:
                     creature.energy += self.config.ENERGY_FROM_FOOD
                     self.world.food.remove(food)
                     break
@@ -33,4 +34,4 @@ class Engine:
                 )
                 newborns.append(newborn)
         self.world.creatures.extend(newborns)
-        self.world.spawn_food(3)
+        self.world.spawn_food(1, self.config.MAX_FOOD)

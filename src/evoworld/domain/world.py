@@ -9,12 +9,17 @@ class World:
     def __init__(self, width: int, height: int):
         self.width = width
         self.height = height
-
         self.food = []
         self.creatures = []
 
-    def spawn_food(self, amount: int):
-        for _ in range(amount):
+    def spawn_food(self, amount: int, max_food: int = None):
+        current_food = len(self.food)
+        maximum_food_reached = max_food is not None and current_food >= max_food
+        if maximum_food_reached:
+            return
+        aviliable_slots = max_food - current_food if max_food else amount
+        spawn_amount = min(amount, aviliable_slots)
+        for _ in range(spawn_amount):
             self.food.append(
                 Food(
                     x=random.randint(0, self.width - 1),
@@ -22,12 +27,12 @@ class World:
                 )
             )
 
-    def spawn_creatures(self, amount: int):
+    def spawn_creatures(self, amount: int, energy: int):
         for _ in range(amount):
             self.creatures.append(
                 Creature(
                     x=random.randint(0, self.width - 1),
                     y=random.randint(0, self.height - 1),
-                    energy=75,
+                    energy=energy,
                 )
             )
