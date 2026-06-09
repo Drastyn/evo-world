@@ -1,6 +1,5 @@
 import pygame
-
-_CELL_SIZE = 10
+from src.evoworld.config.settings import RENDERER_CELL_SIZE
 
 
 class Renderer:
@@ -10,8 +9,8 @@ class Renderer:
         pygame.init()
         self.screen = pygame.display.set_mode(
             (
-                world.width * _CELL_SIZE,
-                world.height * _CELL_SIZE,
+                world.width * RENDERER_CELL_SIZE,
+                world.height * RENDERER_CELL_SIZE,
             )
         )
 
@@ -30,10 +29,10 @@ class Renderer:
             self.screen,
             (0, 255, 0),
             (
-                food.x * _CELL_SIZE,
-                food.y * _CELL_SIZE,
-                _CELL_SIZE,
-                _CELL_SIZE,
+                food.x * RENDERER_CELL_SIZE,
+                food.y * RENDERER_CELL_SIZE,
+                RENDERER_CELL_SIZE,
+                RENDERER_CELL_SIZE,
             ),
         )
 
@@ -42,9 +41,9 @@ class Renderer:
             self.screen,
             creature.color,
             (
-                creature.x * _CELL_SIZE,
-                creature.y * _CELL_SIZE,
-                _CELL_SIZE,
-                _CELL_SIZE,
+                creature.x * RENDERER_CELL_SIZE,
+                creature.y * RENDERER_CELL_SIZE,
+                RENDERER_CELL_SIZE,
+                RENDERER_CELL_SIZE,
             ),
         )
