@@ -1,3 +1,6 @@
+from src.evoworld.config.settings import CREATURE_REPRODUCTION_ENERGY
+
+
 class Engine:
     def __init__(self, world):
         self.world = world
@@ -9,7 +12,7 @@ class Engine:
 
         for creature in world_creatures:
             creature.move(self.world.width, self.world.height)
-            creature.hungry(creature.energy / 200)
+            creature.hungry(creature.energy / CREATURE_REPRODUCTION_ENERGY)
 
             for food in world_food:
                 if creature.eat(food):
