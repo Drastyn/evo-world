@@ -3,16 +3,21 @@ import random
 from src.evoworld.domain.food import Food
 from src.evoworld.domain.creature import Creature
 
+_INITIAL_CREATURES = 50
+_INITIAL_FOOD = 300
+_MAX_FOOD = 600
+_WORLD_WIDTH = 100
+_WORLD_HEIGHT = 100
+
 
 class World:
-
-    def __init__(self, width: int, height: int):
-        self.width = width
-        self.height = height
+    def __init__(self):
+        self.width = _WORLD_WIDTH
+        self.height = _WORLD_HEIGHT
         self.food = []
         self.creatures = []
 
-    def spawn_food(self, amount: int, max_food: int = None):
+    def spawn_food(self, amount: int = _INITIAL_FOOD, max_food: int = _MAX_FOOD):
         current_food = len(self.food)
         maximum_food_reached = max_food is not None and current_food >= max_food
         if maximum_food_reached:
@@ -27,12 +32,11 @@ class World:
                 )
             )
 
-    def spawn_creatures(self, amount: int, energy: int):
+    def spawn_creatures(self, amount: int = _INITIAL_CREATURES):
         for _ in range(amount):
             self.creatures.append(
                 Creature(
                     x=random.randint(0, self.width - 1),
                     y=random.randint(0, self.height - 1),
-                    energy=energy,
                 )
             )

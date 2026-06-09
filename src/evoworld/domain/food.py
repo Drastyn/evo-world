@@ -1,7 +1,7 @@
-from dataclasses import dataclass
+_FOOD_ENERGY = 50
 
-
-@dataclass
 class Food:
-    x: int
-    y: int
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+        self.energy = _FOOD_ENERGY
