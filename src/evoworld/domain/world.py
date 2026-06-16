@@ -9,6 +9,7 @@ from src.evoworld.config.settings import (
     WORLD_WIDTH,
     WORLD_HEIGHT,
 )
+from src.evoworld.domain.genome import Genome
 
 
 class World:
@@ -39,5 +40,8 @@ class World:
                 Creature(
                     x=random.randint(0, self.width - 1),
                     y=random.randint(0, self.height - 1),
+                    genome=Genome(
+                        vision=random.randint(1, 10)
+                    )
                 )
             )
